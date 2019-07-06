@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 //import containers
-import TicketsViewer from "./containers/TicketsViewer";
+import TicketsViewer from "./containers/TicketsViewer/TicketsViewer";
 
 function App() {
   return (
