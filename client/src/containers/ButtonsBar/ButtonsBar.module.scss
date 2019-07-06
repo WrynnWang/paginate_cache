@@ -1,0 +1,36 @@
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .ButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    // background-color: aqua;
+    width: 100%;
+
+    .InfoContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .Variable {
+        color: chocolate;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+
+    .Button {
+      width: 100px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styles from "./TicketsViewer.module.scss";
 
 //import material-ui components
-import CircularProgress from "@material-ui/core/CircularProgress";
+//import CircularProgress from "@material-ui/core/CircularProgress";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
@@ -22,7 +22,7 @@ export const TicketsViewer = props => {
     props.onGetDefaultTickets();
   }, []);
 
-  const { initial, loading, all_tickets } = props.tickets;
+  const { initial, loading, display_tickets } = props.tickets;
 
   if (initial && loading) {
     return <div className={styles.MainContainer}>client is fetching data</div>;
@@ -39,7 +39,7 @@ export const TicketsViewer = props => {
             }}
             cellHeight="auto"
           >
-            {all_tickets.map((tile, index) => (
+            {display_tickets.map((tile, index) => (
               <GridListTile key={index}>
                 <TicketCard ticket={tile} />
               </GridListTile>

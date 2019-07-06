@@ -3,12 +3,13 @@ import "./App.css";
 
 //import containers
 import TicketsViewer from "./containers/TicketsViewer/TicketsViewer";
+import ButtonsBar from "./containers/ButtonsBar/ButtonsBar";
 
 export const App = props => {
   return (
     <div className="App">
       <TicketsViewer />
-      <div>Button Bar</div>
+      <ButtonsBar />
     </div>
   );
 };

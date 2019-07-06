@@ -1,1 +1,1 @@
-export { getDefaultTickets } from "./tickets";
+export { getDefaultTickets, getPreviousPage, getNextPage } from "./tickets";
