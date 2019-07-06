@@ -10,6 +10,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 //import utils
 
 //import self components
+import TicketCard from "../../components/TicketCard/TicketCard";
 
 //import redux actions
 import { getDefaultTickets } from "../../store/action";
@@ -18,11 +19,36 @@ export const TicketsViewer = props => {
   useEffect(() => {
     // call default api at initial/mounting stage
     // fetch data from backend
-    console.log("component did mount");
     props.onGetDefaultTickets();
   }, []);
 
-  return <div className={styles.MainContainer}>Hello World</div>;
+  const { initial, loading, all_tickets } = props.tickets;
+
+  if (initial && loading) {
+    return <div className={styles.MainContainer}>client is fetching data</div>;
+  } else if (!initial && loading) {
+    return <div className={styles.MainContainer}>loading</div>;
+  } else {
+    return (
+      <div className={styles.MainContainer}>
+        <div className={styles.InnerContainer}>
+          <GridList
+            cols={4}
+            style={{
+              justifyContent: "center"
+            }}
+            cellHeight="auto"
+          >
+            {all_tickets.map((tile, index) => (
+              <GridListTile key={index}>
+                <TicketCard ticket={tile} />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = state => {

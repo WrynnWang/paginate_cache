@@ -12,14 +12,14 @@ const tickets = (state = initialState, action) => {
     case actionTypes.GET_DEFAULT_TICKET:
       return {
         ...state,
-        loading: true,
-        initial: false
+        loading: true
       };
     case actionTypes.GET_DEFAULT_TICKET_SUCCESS:
       return {
         ...state,
         all_tickets: action.payload,
-        loading: false
+        loading: false,
+        initial: false
       };
     case actionTypes.GET_DEFAULT_TICKET_FAIL:
       return {
