@@ -36,17 +36,6 @@ export function* saga_getDefaultTickets() {
   }
 }
 
-export function* saga_getPreviousPage() {
-  try {
-    yield put({ type: actionTypes.GET_PREVIOUS_PAGE_SUCCESS });
-  } catch (e) {
-    yield put({
-      type: actionTypes.GET_PREVIOUS_PAGE_FAIL,
-      error: "Get Previous Page Fail"
-    });
-  }
-}
-
 export function* saga_loadTickets() {
   //use select to get redux state data.
   const state = yield select();
@@ -88,6 +77,17 @@ export function* saga_loadTickets() {
   }
 }
 
+export function* saga_getPreviousPage() {
+  try {
+    yield put({ type: actionTypes.GET_PREVIOUS_PAGE_SUCCESS });
+  } catch (e) {
+    yield put({
+      type: actionTypes.GET_PREVIOUS_PAGE_FAIL,
+      error: "Get Previous Page Fail"
+    });
+  }
+}
+
 export function* saga_getNextPage() {
   //use select to get redux state data.
   const state = yield select();
@@ -108,6 +108,24 @@ export function* saga_getNextPage() {
     yield put({
       type: actionTypes.GET_NEXT_PAGE_FAIL,
       error: "Get Next Page Fail"
+    });
+  }
+}
+
+export function* saga_selectSingleTicket(payload) {
+  const ticket = payload.ticket;
+
+  console.log(ticket);
+
+  try {
+    yield put({
+      type: actionTypes.SELECT_SINGLE_TICKET_SUCCESS,
+      payload: ticket
+    });
+  } catch (e) {
+    yield put({
+      type: actionTypes.SELECT_SINGLE_TICKET_FAIL,
+      error: "Select Single Ticket Fail"
     });
   }
 }

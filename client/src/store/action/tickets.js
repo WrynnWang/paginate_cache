@@ -17,3 +17,10 @@ export const getNextPage = () => {
     type: actionTypes.GET_NEXT_PAGE
   };
 };
+
+export const selectSingleTicket = ticket => {
+  return {
+    type: actionTypes.SELECT_SINGLE_TICKET,
+    ticket: ticket
+  };
+};

@@ -1,10 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+
+import { selectSingleTicket } from "../../store/action";
 
 const useStyles = makeStyles({
   card: {
@@ -62,7 +66,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function TicketCard(props) {
+export const TicketCard = props => {
   const classes = useStyles();
 
   const { ticket } = props;
@@ -88,7 +92,7 @@ export default function TicketCard(props) {
       </CardContent>
       <CardActions>
         <Button
-          //onClick={() => props.showDetail(ticket)}
+          onClick={() => props.onSelectSingleTicket(ticket)}
           className={classes.button}
           //variant="contained"
           size="small"
@@ -99,4 +103,15 @@ export default function TicketCard(props) {
       </CardActions>
     </Card>
   );
-}
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSelectSingleTicket: ticket => dispatch(selectSingleTicket(ticket))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(TicketCard);

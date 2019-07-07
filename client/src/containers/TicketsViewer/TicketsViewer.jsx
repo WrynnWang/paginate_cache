@@ -12,6 +12,8 @@ import GridListTile from "@material-ui/core/GridListTile";
 //import self components
 import TicketCard from "../../components/TicketCard/TicketCard";
 import ToQuickDialog from "../../components/ToQuickDialog/ToQuickDialog";
+import InitialInfo from "../../components/InitialInfo/InitialInfo";
+//import DetailDrawer from "../../components/DetailDrawer/DetailDrawer";
 
 //import redux actions
 import { getDefaultTickets } from "../../store/action";
@@ -27,12 +29,17 @@ export const TicketsViewer = props => {
   const { initial, loading, display_tickets } = props.tickets;
 
   if (initial && loading) {
-    return <div className={styles.MainContainer}>client is fetching data</div>;
+    return (
+      <div className={styles.MainContainer}>
+        <InitialInfo />
+      </div>
+    );
   } else {
     return (
       <div className={styles.MainContainer}>
         <ToQuickDialog />
         <div className={styles.InnerContainer}>
+          {/* <DetailDrawer /> */}
           <GridList
             cols={4}
             style={{

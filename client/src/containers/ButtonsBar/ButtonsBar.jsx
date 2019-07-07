@@ -5,17 +5,27 @@ import styles from "./ButtonsBar.module.scss";
 //import material-ui components
 import Button from "@material-ui/core/Button";
 
+//import self components
+import PageInfo from "../../components/PageInfo/PageInfo";
+
 //import redux actions
 import { getNextPage, getPreviousPage } from "../../store/action";
 
 export const ButtonsBar = props => {
-  const { currentPage, totalPages } = props.tickets;
+  const { currentPage, totalPages, initial, loading } = props.tickets;
+
+  let showInitialInfo;
+  if (initial && loading) {
+    showInitialInfo = true;
+  } else {
+    showInitialInfo = false;
+  }
 
   return (
     <div className={styles.MainContainer}>
       <div className={styles.ButtonsContainer}>
         <Button
-          disabled={currentPage === 1}
+          disabled={currentPage === 1 || initial}
           variant="contained"
           color="secondary"
           onClick={() => props.onGetPreviousPage()}
@@ -23,12 +33,15 @@ export const ButtonsBar = props => {
         >
           Back
         </Button>
-        <div className={styles.InfoContainer}>
-          Page <h2 className={styles.Variable}>{currentPage}</h2> of{" "}
-          <h2 className={styles.Variable}>{totalPages}</h2>
-        </div>
+
+        <PageInfo
+          show={showInitialInfo}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+
         <Button
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || initial}
           onClick={() => props.onGetNextPage()}
           variant="contained"
           color="secondary"

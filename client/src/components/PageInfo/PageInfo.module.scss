@@ -1,0 +1,12 @@
+.InfoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .Variable {
+    color: chocolate;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}

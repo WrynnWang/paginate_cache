@@ -1,1 +1,6 @@
-export { getDefaultTickets, getPreviousPage, getNextPage } from "./tickets";
+export {
+  getDefaultTickets,
+  getPreviousPage,
+  getNextPage,
+  selectSingleTicket
+} from "./tickets";

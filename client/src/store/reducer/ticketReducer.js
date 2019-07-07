@@ -3,6 +3,7 @@ import * as actionTypes from "../action/actionTypes";
 const initialState = {
   all_tickets: [],
   display_tickets: [],
+  select_ticket: null,
   currentPage: 0,
   totalPages: 0,
   loading: false,
@@ -37,10 +38,7 @@ const tickets = (state = initialState, action) => {
         error: action.payload
       };
     case actionTypes.GET_PREVIOUS_PAGE:
-      return {
-        ...state
-        //loading: true
-      };
+      return state;
     case actionTypes.GET_PREVIOUS_PAGE_SUCCESS:
       return {
         ...state,
@@ -58,10 +56,7 @@ const tickets = (state = initialState, action) => {
         //loading: false
       };
     case actionTypes.GET_NEXT_PAGE:
-      return {
-        ...state
-        //loading: true
-      };
+      return state;
     case actionTypes.GET_NEXT_PAGE_SUCCESS:
       return {
         ...state,
@@ -106,6 +101,18 @@ const tickets = (state = initialState, action) => {
       return {
         ...state,
         reachEnd: true
+      };
+    case actionTypes.SELECT_SINGLE_TICKET:
+      return state;
+    case actionTypes.SELECT_SINGLE_TICKET_SUCCESS:
+      return {
+        ...state,
+        select_ticket: action.payload
+      };
+    case actionTypes.SELECT_SINGLE_TICKET_FAIL:
+      return {
+        ...state,
+        select_ticket: null
       };
     default:
       return state;
