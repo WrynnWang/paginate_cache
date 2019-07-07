@@ -112,7 +112,19 @@ const tickets = (state = initialState, action) => {
     case actionTypes.SELECT_SINGLE_TICKET_FAIL:
       return {
         ...state,
+        error: action.payload
+      };
+    case actionTypes.REMOVE_SINGLE_TICKET:
+      return state;
+    case actionTypes.REMOVE_SINGLE_TICKET_SUCCESS:
+      return {
+        ...state,
         select_ticket: null
+      };
+    case actionTypes.REMOVE_SINGLE_TICKET_FAIL:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

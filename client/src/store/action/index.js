@@ -2,5 +2,6 @@ export {
   getDefaultTickets,
   getPreviousPage,
   getNextPage,
-  selectSingleTicket
+  selectSingleTicket,
+  removeSingleTicket
 } from "./tickets";

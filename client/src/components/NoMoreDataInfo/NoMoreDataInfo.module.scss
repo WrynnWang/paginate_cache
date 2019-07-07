@@ -1,0 +1,16 @@
+.InfoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: burlywood;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  .Variable {
+    color: chocolate;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}

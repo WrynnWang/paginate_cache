@@ -114,9 +114,6 @@ export function* saga_getNextPage() {
 
 export function* saga_selectSingleTicket(payload) {
   const ticket = payload.ticket;
-
-  console.log(ticket);
-
   try {
     yield put({
       type: actionTypes.SELECT_SINGLE_TICKET_SUCCESS,
@@ -126,6 +123,19 @@ export function* saga_selectSingleTicket(payload) {
     yield put({
       type: actionTypes.SELECT_SINGLE_TICKET_FAIL,
       error: "Select Single Ticket Fail"
+    });
+  }
+}
+
+export function* saga_removeSingleTicket() {
+  try {
+    yield put({
+      type: actionTypes.REMOVE_SINGLE_TICKET_SUCCESS
+    });
+  } catch (e) {
+    yield put({
+      type: actionTypes.REMOVE_SINGLE_TICKET_FAIL,
+      error: "Remove Single Ticket Fail"
     });
   }
 }

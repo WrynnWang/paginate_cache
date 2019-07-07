@@ -24,3 +24,9 @@ export const selectSingleTicket = ticket => {
     ticket: ticket
   };
 };
+
+export const removeSingleTicket = () => {
+  return {
+    type: actionTypes.REMOVE_SINGLE_TICKET
+  };
+};

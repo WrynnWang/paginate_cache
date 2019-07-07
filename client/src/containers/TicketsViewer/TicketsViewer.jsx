@@ -13,7 +13,8 @@ import GridListTile from "@material-ui/core/GridListTile";
 import TicketCard from "../../components/TicketCard/TicketCard";
 import ToQuickDialog from "../../components/ToQuickDialog/ToQuickDialog";
 import InitialInfo from "../../components/InitialInfo/InitialInfo";
-//import DetailDrawer from "../../components/DetailDrawer/DetailDrawer";
+import DetailDrawer from "../../components/DetailDrawer/DetailDrawer";
+import NoMoreDataInfo from "../../components/NoMoreDataInfo/NoMoreDataInfo";
 
 //import redux actions
 import { getDefaultTickets } from "../../store/action";
@@ -26,7 +27,13 @@ export const TicketsViewer = props => {
     onGetDefaultTickets();
   }, [onGetDefaultTickets]);
 
-  const { initial, loading, display_tickets } = props.tickets;
+  const {
+    initial,
+    loading,
+    display_tickets,
+    currentPage,
+    totalPages
+  } = props.tickets;
 
   if (initial && loading) {
     return (
@@ -38,8 +45,13 @@ export const TicketsViewer = props => {
     return (
       <div className={styles.MainContainer}>
         <ToQuickDialog />
+        <NoMoreDataInfo
+          loading={loading}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
         <div className={styles.InnerContainer}>
-          {/* <DetailDrawer /> */}
+          <DetailDrawer />
           <GridList
             cols={4}
             style={{

@@ -1,0 +1,26 @@
+.drawer {
+  width: 550px;
+  padding: 10px;
+  .drawerHeader {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title {
+    flex: 1;
+  }
+
+  .closeButton {
+    position: absolute;
+    width: 5px;
+    right: 0;
+    top: 0;
+    color: aquamarine;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}

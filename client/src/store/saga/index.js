@@ -6,7 +6,8 @@ import {
   saga_getPreviousPage,
   saga_getNextPage,
   saga_loadTickets,
-  saga_selectSingleTicket
+  saga_selectSingleTicket,
+  saga_removeSingleTicket
 } from "./ticketSaga";
 
 export default function* rootSaga() {
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     takeEvery(actionTypes.GET_PREVIOUS_PAGE, saga_getPreviousPage),
     takeEvery(actionTypes.GET_NEXT_PAGE, saga_getNextPage),
     takeLatest(actionTypes.LOAD_TICKETS, saga_loadTickets),
-    takeLatest(actionTypes.SELECT_SINGLE_TICKET, saga_selectSingleTicket)
+    takeLatest(actionTypes.SELECT_SINGLE_TICKET, saga_selectSingleTicket),
+    takeLatest(actionTypes.REMOVE_SINGLE_TICKET, saga_removeSingleTicket)
   ]);
 }
