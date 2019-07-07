@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import styles from "./ButtonsBar.module.scss";
 
@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { getNextPage, getPreviousPage } from "../../store/action";
 
 export const ButtonsBar = props => {
-  const { loading, currentPage, totalPages } = props.tickets;
+  const { currentPage, totalPages } = props.tickets;
 
   return (
     <div className={styles.MainContainer}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styles from "./TicketsViewer.module.scss";
 
@@ -11,26 +11,27 @@ import GridListTile from "@material-ui/core/GridListTile";
 
 //import self components
 import TicketCard from "../../components/TicketCard/TicketCard";
+import ToQuickDialog from "../../components/ToQuickDialog/ToQuickDialog";
 
 //import redux actions
 import { getDefaultTickets } from "../../store/action";
 
 export const TicketsViewer = props => {
+  const { onGetDefaultTickets } = props;
   useEffect(() => {
     // call default api at initial/mounting stage
     // fetch data from backend
-    props.onGetDefaultTickets();
-  }, []);
+    onGetDefaultTickets();
+  }, [onGetDefaultTickets]);
 
   const { initial, loading, display_tickets } = props.tickets;
 
   if (initial && loading) {
     return <div className={styles.MainContainer}>client is fetching data</div>;
-  } else if (!initial && loading) {
-    return <div className={styles.MainContainer}>loading</div>;
   } else {
     return (
       <div className={styles.MainContainer}>
+        <ToQuickDialog />
         <div className={styles.InnerContainer}>
           <GridList
             cols={4}
