@@ -2,49 +2,20 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styles from "./DetailDrawer.module.scss";
 
-import { makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 
 import DrawerRow from "./DrawerRow/DrawerRow";
 
 import { removeSingleTicket } from "../../store/action";
 
-const useStyles = makeStyles({
-  title: {
-    width: 80
-  },
-  text: {
-    marginLeft: 5,
-    textDecoration: "underline"
-  },
-  desc: {
-    // textAlign: "left",
-    // overflow: "hidden",
-    // textOverflow: "ellipsis",
-    // WebkitLineClamp: 4,
-    textDecoration: "underline"
-    //width: 120
-  }
-});
-
 export const DetailDrawer = props => {
-  const [initial, setInitial] = useState(true);
   const [ticket, setTicket] = useState(null);
-  const [right, setRight] = useState(false);
-
-  const classes = useStyles();
 
   const { select_ticket } = props.tickets;
 
   const selectTicketHandler = select_ticket => {
     setTicket(select_ticket);
-  };
-
-  const toggleDrawer = () => {
-    setRight(!right);
   };
 
   const closeDrawer = () => {
@@ -53,11 +24,6 @@ export const DetailDrawer = props => {
 
   useEffect(() => {
     selectTicketHandler(select_ticket);
-    if (initial) {
-      setInitial(false);
-    } else {
-      toggleDrawer();
-    }
   }, [select_ticket]);
 
   let drawer_content;
@@ -94,7 +60,7 @@ export const DetailDrawer = props => {
   }
 
   return (
-    <Drawer anchor="right" open={right} onClose={() => closeDrawer()}>
+    <Drawer anchor="right" open={ticket !== null} onClose={() => closeDrawer()}>
       {drawer_content}
     </Drawer>
   );

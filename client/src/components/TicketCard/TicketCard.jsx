@@ -51,11 +51,12 @@ const useStyles = makeStyles({
   },
   desc: {
     fontSize: 15,
-    marginTop: 10,
+    marginTop: 5,
     textAlign: "left",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    WebkitLineClamp: 4,
+    maxLines: 2,
+    //WebkitLineClamp: 4,
     width: 220
   },
   button: {
@@ -86,8 +87,10 @@ export const TicketCard = props => {
         <Typography className={classes.detail} color="textSecondary">
           Assignee: {ticket.coreData.assignee}
         </Typography>
-        <Typography className={classes.desc} color="primary" noWrap>
-          {ticket.coreData.shortDescription}
+        <Typography className={classes.desc} color="primary">
+          {ticket.coreData.shortDescription.length > 50
+            ? ticket.coreData.shortDescription.slice(0, 50) + "..."
+            : ticket.coreData.shortDescription}
         </Typography>
       </CardContent>
       <CardActions>

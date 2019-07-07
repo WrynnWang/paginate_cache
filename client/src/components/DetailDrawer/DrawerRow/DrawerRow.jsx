@@ -13,7 +13,8 @@ const useStyles = makeStyles({
   },
   text: {
     marginLeft: 15,
-    textDecoration: "underline"
+    width: 350,
+    borderBottom: "1px solid"
   }
 });
 export const DrawerRow = props => {
