@@ -37,9 +37,10 @@ As functional components surpporting state and covering nearly all lifecycle met
 
 ## 4. Code Structure
 
-![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/tree/master/pictures/treestructure.png)
+![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/treestructure.png)
 
 ## 5. Cache Degisn
+![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/algo.png)
 
 ## 6. Unit Test.
 
@@ -49,7 +50,7 @@ Using **_Testing-library/React_** (used to be **_react-testing-library_**) for u
 - `$npm run test`
 
 And test result shows below.
-![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/tree/master/pictures/testResult.png)
+![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/testResult.png)
 
 ## 7. Docker
 
