@@ -3,4 +3,18 @@
   flex-direction: row;
   align-content: center;
   margin-bottom: 10px;
+
+  .title {
+    width: 110px;
+  }
+  .desc_title {
+    width: 110px;
+    font-size: 8px;
+  }
+
+  .text {
+    margin-left: 15px;
+    width: 350px;
+    border-bottom: 1px solid;
+  }
 }

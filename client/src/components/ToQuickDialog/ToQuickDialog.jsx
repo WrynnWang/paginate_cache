@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { makeStyles } from "@material-ui/core/styles";
+import styles from "./ToQuickDialog.module.scss";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -13,16 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const useStyles = makeStyles({
-  margin: {
-    marginTop: 10,
-    marginBottom: 10
-  }
-});
-
 export const ToQuickDialog = props => {
-  const classes = useStyles();
-
   const { toQuick } = props.tickets;
   return (
     <div>
@@ -33,13 +23,13 @@ export const ToQuickDialog = props => {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <LinearProgress className={classes.margin} />
+        <LinearProgress className={styles.margin} />
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             To quick to get next page. Please wait for loading more tickets.
           </DialogContentText>
         </DialogContent>
-        <LinearProgress className={classes.margin} />
+        <LinearProgress className={styles.margin} />
       </Dialog>
     </div>
   );

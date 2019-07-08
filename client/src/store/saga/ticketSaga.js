@@ -1,10 +1,9 @@
 import axios from "axios";
-import { all, call, put, select, delay } from "redux-saga/effects";
+import { all, call, put, select } from "redux-saga/effects";
 
 import * as actionTypes from "../action/actionTypes";
 
 export function* saga_getDefaultTickets() {
-  yield delay(500);
   try {
     const responses = yield all([
       call(axios.get, `/tickets/0/12`),
@@ -41,7 +40,6 @@ export function* saga_loadTickets() {
   const state = yield select();
   const { totalPages } = state.tickets;
 
-  yield delay(500);
   try {
     const responses = yield all([
       call(axios.get, `/tickets/${totalPages}/12`),
@@ -77,17 +75,6 @@ export function* saga_loadTickets() {
   }
 }
 
-export function* saga_getPreviousPage() {
-  try {
-    yield put({ type: actionTypes.GET_PREVIOUS_PAGE_SUCCESS });
-  } catch (e) {
-    yield put({
-      type: actionTypes.GET_PREVIOUS_PAGE_FAIL,
-      error: "Get Previous Page Fail"
-    });
-  }
-}
-
 export function* saga_getNextPage() {
   //use select to get redux state data.
   const state = yield select();
@@ -108,34 +95,6 @@ export function* saga_getNextPage() {
     yield put({
       type: actionTypes.GET_NEXT_PAGE_FAIL,
       error: "Get Next Page Fail"
-    });
-  }
-}
-
-export function* saga_selectSingleTicket(payload) {
-  const ticket = payload.ticket;
-  try {
-    yield put({
-      type: actionTypes.SELECT_SINGLE_TICKET_SUCCESS,
-      payload: ticket
-    });
-  } catch (e) {
-    yield put({
-      type: actionTypes.SELECT_SINGLE_TICKET_FAIL,
-      error: "Select Single Ticket Fail"
-    });
-  }
-}
-
-export function* saga_removeSingleTicket() {
-  try {
-    yield put({
-      type: actionTypes.REMOVE_SINGLE_TICKET_SUCCESS
-    });
-  } catch (e) {
-    yield put({
-      type: actionTypes.REMOVE_SINGLE_TICKET_FAIL,
-      error: "Remove Single Ticket Fail"
     });
   }
 }

@@ -52,13 +52,7 @@ export const TicketsViewer = props => {
         />
         <div className={styles.InnerContainer}>
           <DetailDrawer />
-          <GridList
-            cols={4}
-            style={{
-              justifyContent: "center"
-            }}
-            cellHeight="auto"
-          >
+          <GridList cols={4} cellHeight="auto">
             {display_tickets.map((tile, index) => (
               <GridListTile key={index}>
                 <TicketCard ticket={tile} />

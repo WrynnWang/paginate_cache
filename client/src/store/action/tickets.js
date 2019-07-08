@@ -21,7 +21,7 @@ export const getNextPage = () => {
 export const selectSingleTicket = ticket => {
   return {
     type: actionTypes.SELECT_SINGLE_TICKET,
-    ticket: ticket
+    payload: ticket
   };
 };
 

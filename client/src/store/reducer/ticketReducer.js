@@ -38,8 +38,6 @@ const tickets = (state = initialState, action) => {
         error: action.payload
       };
     case actionTypes.GET_PREVIOUS_PAGE:
-      return state;
-    case actionTypes.GET_PREVIOUS_PAGE_SUCCESS:
       return {
         ...state,
         //loading: false,
@@ -49,12 +47,7 @@ const tickets = (state = initialState, action) => {
           12 * (state.currentPage - 2) + 12
         )
       };
-    case actionTypes.GET_PREVIOUS_PAGE_FAIL:
-      return {
-        ...state,
-        error: action.payload
-        //loading: false
-      };
+
     case actionTypes.GET_NEXT_PAGE:
       return state;
     case actionTypes.GET_NEXT_PAGE_SUCCESS:
@@ -102,30 +95,19 @@ const tickets = (state = initialState, action) => {
         ...state,
         reachEnd: true
       };
+
     case actionTypes.SELECT_SINGLE_TICKET:
-      return state;
-    case actionTypes.SELECT_SINGLE_TICKET_SUCCESS:
       return {
         ...state,
         select_ticket: action.payload
       };
-    case actionTypes.SELECT_SINGLE_TICKET_FAIL:
-      return {
-        ...state,
-        error: action.payload
-      };
+
     case actionTypes.REMOVE_SINGLE_TICKET:
-      return state;
-    case actionTypes.REMOVE_SINGLE_TICKET_SUCCESS:
       return {
         ...state,
         select_ticket: null
       };
-    case actionTypes.REMOVE_SINGLE_TICKET_FAIL:
-      return {
-        ...state,
-        error: action.payload
-      };
+
     default:
       return state;
   }
