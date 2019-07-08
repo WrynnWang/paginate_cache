@@ -7,8 +7,6 @@ import styles from "./TicketsViewer.module.scss";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
-//import utils
-
 //import self components
 import TicketCard from "../../components/TicketCard/TicketCard";
 import ToQuickDialog from "../../components/ToQuickDialog/ToQuickDialog";

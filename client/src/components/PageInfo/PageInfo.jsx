@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./PageInfo.module.scss";
 
 export const PageInfo = props => {
+  // @desc    Infomation inside the paginator bar.
+  // @desc    Indicate how many pages intotal and
+  // @desc    which page is currently displaying.
+
   const { show, currentPage, totalPages } = props;
 
   if (show) {

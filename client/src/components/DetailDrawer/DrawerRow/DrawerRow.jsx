@@ -3,6 +3,8 @@ import styles from "./DrawerRow.module.scss";
 import Typography from "@material-ui/core/Typography";
 
 export const DrawerRow = props => {
+  // @desc  Display a single record of a ticket in the drawer.
+
   const { title, content } = props;
   return (
     <div className={styles.row}>

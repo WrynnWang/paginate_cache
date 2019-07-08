@@ -68,6 +68,7 @@ const useStyles = makeStyles({
 });
 
 export const TicketCard = props => {
+  // @desc    Card component in the main viewer
   const classes = useStyles();
 
   const { ticket } = props;

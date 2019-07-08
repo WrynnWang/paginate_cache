@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./NoMoreDataInfo.module.scss";
 
 export const PageInfo = props => {
+  // @desc    Indication for uses that there are no more tickets
+  // @desc    From backend.
   const { loading, currentPage, totalPages } = props;
 
   if (!loading && currentPage === totalPages) {

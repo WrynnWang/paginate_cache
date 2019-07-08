@@ -81,7 +81,7 @@ export function* saga_getNextPage() {
   const { currentPage, totalPages, loading, reachEnd } = state.tickets;
 
   if (currentPage === totalPages - 1 && loading) {
-    console.log("Click to fask! Waiting for caching more data");
+    //console.log("Click to fask! Waiting for caching more data");
     yield put({ type: actionTypes.GET_NEXT_PAGE_TO_QUICK });
   }
 

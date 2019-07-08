@@ -10,6 +10,8 @@ import DrawerRow from "./DrawerRow/DrawerRow";
 import { removeSingleTicket } from "../../store/action";
 
 export const DetailDrawer = props => {
+  // @desc  Right Side Drawer. Display detailed ticket.
+
   const [ticket, setTicket] = useState(null);
 
   const { select_ticket } = props.tickets;
@@ -28,6 +30,7 @@ export const DetailDrawer = props => {
 
   let drawer_content;
   if (ticket) {
+    // If select a single ticket, drawer content is not null.
     drawer_content = (
       <div className={styles.drawer}>
         <div className={styles.drawerHeader}>
