@@ -35,13 +35,13 @@ export const TicketsViewer = props => {
 
   if (initial && loading) {
     return (
-      <div className={styles.MainContainer}>
+      <div className={styles.MainContainer} data-testid="TicketsViewer">
         <InitialInfo />
       </div>
     );
   } else {
     return (
-      <div className={styles.MainContainer}>
+      <div className={styles.MainContainer} data-testid="TicketsViewer">
         <ToQuickDialog />
         <NoMoreDataInfo
           loading={loading}

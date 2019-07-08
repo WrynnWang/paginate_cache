@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./NoMoreDataInfo.module.scss";
 
-export const PageInfo = props => {
+export const NoMoreDataInfo = props => {
   // @desc    Indication for uses that there are no more tickets
   // @desc    From backend.
   const { loading, currentPage, totalPages } = props;
@@ -17,4 +17,4 @@ export const PageInfo = props => {
   }
 };
 
-export default PageInfo;
+export default NoMoreDataInfo;

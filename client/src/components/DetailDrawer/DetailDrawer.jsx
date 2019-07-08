@@ -63,9 +63,15 @@ export const DetailDrawer = props => {
   }
 
   return (
-    <Drawer anchor="right" open={ticket !== null} onClose={() => closeDrawer()}>
-      {drawer_content}
-    </Drawer>
+    <div data-testid="DetailDrawer">
+      <Drawer
+        anchor="right"
+        open={ticket !== null}
+        onClose={() => closeDrawer()}
+      >
+        {drawer_content}
+      </Drawer>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import ButtonsBar from "./containers/ButtonsBar/ButtonsBar";
 
 export const App = props => {
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <TicketsViewer />
       <ButtonsBar />
     </div>

@@ -1,6 +1,6 @@
 import * as actionTypes from "../action/actionTypes";
 
-const initialState = {
+export const initialState = {
   all_tickets: [],
   display_tickets: [],
   select_ticket: null,

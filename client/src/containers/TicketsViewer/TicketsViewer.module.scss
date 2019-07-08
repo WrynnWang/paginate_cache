@@ -6,11 +6,12 @@
   //background-color: aqua;
   width: 1200px;
   height: auto;
-  min-height: 850px;
+  //min-height: 1000px;
   padding-top: 100px;
 
   .InnerContainer {
     width: 85%;
     height: auto;
+    min-height: 735px;
   }
 }

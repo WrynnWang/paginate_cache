@@ -7,7 +7,7 @@ export const DrawerRow = props => {
 
   const { title, content } = props;
   return (
-    <div className={styles.row}>
+    <div className={styles.row} data-testid="DrawerRow">
       <Typography
         variant="caption"
         display="block"

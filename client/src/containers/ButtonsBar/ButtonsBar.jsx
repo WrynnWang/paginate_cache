@@ -22,7 +22,7 @@ export const ButtonsBar = props => {
   }
 
   return (
-    <div className={styles.MainContainer}>
+    <div className={styles.MainContainer} data-testid="ButtonsBar">
       <div className={styles.ButtonsContainer}>
         <Button
           disabled={currentPage === 1 || initial}
