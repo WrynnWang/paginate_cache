@@ -13,12 +13,14 @@ import ToQuickDialog from "../../components/ToQuickDialog/ToQuickDialog";
 import InitialInfo from "../../components/InitialInfo/InitialInfo";
 import DetailDrawer from "../../components/DetailDrawer/DetailDrawer";
 import NoMoreDataInfo from "../../components/NoMoreDataInfo/NoMoreDataInfo";
+import ErrorInfo from "../../components/ErrorInfo/ErrorInfo";
 
 //import redux actions
 import { getDefaultTickets } from "../../store/action";
 
 export const TicketsViewer = props => {
   const { onGetDefaultTickets } = props;
+
   useEffect(() => {
     // call default api at initial/mounting stage
     // fetch data from backend
@@ -28,38 +30,54 @@ export const TicketsViewer = props => {
   const {
     initial,
     loading,
+    error,
     display_tickets,
     currentPage,
     totalPages
   } = props.tickets;
 
-  if (initial && loading) {
+  if (error) {
     return (
       <div className={styles.MainContainer} data-testid="TicketsViewer">
-        <InitialInfo />
+        <ErrorInfo />
       </div>
     );
   } else {
-    return (
-      <div className={styles.MainContainer} data-testid="TicketsViewer">
-        <ToQuickDialog />
-        <NoMoreDataInfo
-          loading={loading}
-          currentPage={currentPage}
-          totalPages={totalPages}
-        />
-        <div className={styles.InnerContainer}>
-          <DetailDrawer />
-          <GridList cols={4} cellHeight="auto">
-            {display_tickets.map((tile, index) => (
-              <GridListTile key={index}>
-                <TicketCard ticket={tile} />
-              </GridListTile>
-            ))}
-          </GridList>
+    if (initial && loading) {
+      return (
+        <div className={styles.MainContainer} data-testid="TicketsViewer">
+          <InitialInfo />
         </div>
-      </div>
-    );
+      );
+    } else if (currentPage === totalPages + 1 && loading) {
+      return (
+        <div className={styles.MainContainer} data-testid="TicketsViewer">
+          <ToQuickDialog />
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.MainContainer} data-testid="TicketsViewer">
+          {/* <ToQuickDialog /> */}
+          <NoMoreDataInfo
+            initial={initial}
+            loading={loading}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
+          <div className={styles.InnerContainer}>
+            <DetailDrawer />
+            <GridList cols={4} cellHeight="auto">
+              {display_tickets.map((tile, index) => (
+                <GridListTile key={index}>
+                  <TicketCard ticket={tile} />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </div>
+      );
+    }
   }
 };
 

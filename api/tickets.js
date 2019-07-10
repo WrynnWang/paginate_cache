@@ -15,18 +15,13 @@ router.get("/", (req, res) => res.json({ msg: "this one Works" }));
 // @access  Public
 router.get("/:page/:perPage", (req, res) => {
   axios
-    .get(
-      `https://dh-atratadev.atrmywizard360.com/atr-gateway/ticket-management/api/v1/tickets?ticketType=incident&sortDirection=DESC&page=${
-        req.params.page
-      }&perPage=${req.params.perPage}`,
-      {
-        headers: {
-          apiToken: token
-        }
+    .get(baseUrl + `${req.params.page}&perPage=${req.params.perPage}`, {
+      headers: {
+        apiToken: token
       }
-    )
+    })
     .then(response => {
-      res.json(response.data);
+      res.json({ data: response.data, headers: response.headers });
     })
     .catch(err => res.status(400).json({ err: err }));
 });

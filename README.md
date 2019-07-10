@@ -8,6 +8,7 @@ This repository is the solution for the technical test from Accenture. The goal 
 
 - set up all dependencies `$ npm run build`
 - start the project `$ npm run dev`
+- Use **concurrently** to start node.js and react at the same time
 
 ### 1.2 Docker
 
@@ -19,6 +20,7 @@ This repository is the solution for the technical test from Accenture. The goal 
 
 - Alternatively, run bash script <br> `$ ./bash.sh` <br>
 - Hint : The bash script has been change mod by <br> `$ chmod 755 bash.sh`
+- Manually go to `localhost:3000`.
 
 ## 2. Intro
 
@@ -40,12 +42,17 @@ As functional components supporting state and covering nearly all lifecycle meth
 ![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/treestructure.png)
 
 ## 5. Cache Degisn
+
+There are detailed comments for all variables in the reducer and the saga file to help you understand the whole design.<br>
 ![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/algo.png)
 
-1.  Only two async actions in the whole design, which are ***GET_DEFAULT_TICKETS*** and ***LOAD_TICKETS***. We need to check the payload count. For example, we requested 8 pages of tickets, if the payload including less than 8 * 12 tickets, there are no more tickets in the backend. (If not reach the end)
-2.  Assume there are 12 pages in the cache, if user click button to quickly and leaving from 11 to 12 page, show indication that there are loading more data from the backend.
-3.  Assume there are 12 pages in the cache, is user click next button and enter page 11, call ***LOAD_TICKETS***. (If not reach the end)
+<br>
 
+1.  Only two async actions in the whole design, which are **_GET_DEFAULT_TICKETS_** and **_LOAD_TICKETS_**. Both of them have the ability to make sure there are no more tickets from the backend.
+2.  When calling **_GET_DEFAULT_TICKETS_** and **_LOAD_TICKETS_**, if the backend cannot providing enough tickets, for example, there are 30 tickets left while we requested 4 \* 12 = 48 tickets, the algorithm will automatically determine the minimum apis to call to minimising the number of requests to the backend.
+3.  Assume there are already 12 pages in the cache. If the user click button to quickly to go to the first uncached page, which is page 13, show indication that there are loading more data from the backend. (If not reach the end, which means there are still available tickets from backend)
+4.  Assume there are 12 pages in the cache, is user click next button and enter the last caching page, which is page 12, call **_LOAD_TICKETS_**.(If not reach the end, which means there are still available tickets from backend)
+5.  After **_LOAD_TICKETS_SUCCESS_**, the reducer will also update displaying tickets according to the current page number. This is countering the case that the user clicks the next button to quickly to go inside the first uncached page, the index displaying tickets array is beyond the upper bound of all the caching tickets.
 
 ## 6. Unit Test.
 
@@ -53,6 +60,7 @@ Using **_Testing-library/React_** (used to be **_react-testing-library_**) for u
 
 - `$cd client`
 - `$npm run test`
+- Then click a to run all test cases.
 
 And test result shows below. <br>
 ![](https://raw.githubusercontent.com/WrynnWang/paginate_cache/master/pictures/testResult.png)
@@ -81,4 +89,4 @@ Hint : The bash script has been changed mod by `$ chmod 755 bash.sh`
 
 ## 10. To Do List.
 
--   Could not find a few data need to display in the ticket data structure. ***Approval***, etc. 
+- Could not find a few data need to display in the ticket data structure. **_Approval_**, etc.

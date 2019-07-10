@@ -6,7 +6,7 @@ export const PageInfo = props => {
   // @desc    Indicate how many pages intotal and
   // @desc    which page is currently displaying.
 
-  const { show, currentPage, totalPages } = props;
+  const { show, currentPage, backendPages } = props;
 
   if (show) {
     return (
@@ -18,7 +18,7 @@ export const PageInfo = props => {
     return (
       <div className={styles.InfoContainer} data-testid="PageInfo">
         Page <h2 className={styles.Variable}>{currentPage}</h2> of{" "}
-        <h2 className={styles.Variable}>{totalPages}</h2>
+        <h2 className={styles.Variable}>{backendPages}</h2>
       </div>
     );
   }

@@ -47,7 +47,7 @@ export const DetailDrawer = props => {
         />
         <DrawerRow
           title={"Application"}
-          content={ticket.coreData.application}
+          content={"System"} /*This variable always empty string */
         />
         <DrawerRow title={"made_sla"} content={ticket.allFields.made_sla} />
         <DrawerRow

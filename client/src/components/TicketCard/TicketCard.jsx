@@ -82,8 +82,9 @@ export const TicketCard = props => {
         <Typography variant="h5" component="h5" color="textSecondary">
           {ticket.coreData.number}
         </Typography>
+
         <Typography className={classes.createdAt} color="textSecondary">
-          Application: {ticket.coreData.application}
+          Application: System {/*This variable always empty string */}
         </Typography>
         <Typography className={classes.detail} color="textSecondary">
           Assignee: {ticket.coreData.assignee}

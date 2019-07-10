@@ -12,7 +12,13 @@ import PageInfo from "../../components/PageInfo/PageInfo";
 import { getNextPage, getPreviousPage } from "../../store/action";
 
 export const ButtonsBar = props => {
-  const { currentPage, totalPages, initial, loading } = props.tickets;
+  const {
+    currentPage,
+    backendPages,
+    initial,
+    loading,
+    toQuick
+  } = props.tickets;
 
   let showInitialInfo;
   if (initial && loading) {
@@ -25,7 +31,7 @@ export const ButtonsBar = props => {
     <div className={styles.MainContainer} data-testid="ButtonsBar">
       <div className={styles.ButtonsContainer}>
         <Button
-          disabled={currentPage === 1 || initial}
+          disabled={currentPage === 1 || initial || toQuick}
           variant="contained"
           color="secondary"
           onClick={() => props.onGetPreviousPage()}
@@ -37,11 +43,11 @@ export const ButtonsBar = props => {
         <PageInfo
           show={showInitialInfo}
           currentPage={currentPage}
-          totalPages={totalPages}
+          backendPages={backendPages}
         />
 
         <Button
-          disabled={currentPage === totalPages || initial}
+          disabled={currentPage === backendPages || initial || toQuick}
           onClick={() => props.onGetNextPage()}
           variant="contained"
           color="secondary"
