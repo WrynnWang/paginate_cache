@@ -17,7 +17,8 @@ export const ButtonsBar = props => {
     backendPages,
     initial,
     loading,
-    toQuick
+    toQuick,
+    error
   } = props.tickets;
 
   let showInitialInfo;
@@ -31,7 +32,7 @@ export const ButtonsBar = props => {
     <div className={styles.MainContainer} data-testid="ButtonsBar">
       <div className={styles.ButtonsContainer}>
         <Button
-          disabled={currentPage === 1 || initial || toQuick}
+          disabled={currentPage === 1 || initial || toQuick || error}
           variant="contained"
           color="secondary"
           onClick={() => props.onGetPreviousPage()}
@@ -47,7 +48,7 @@ export const ButtonsBar = props => {
         />
 
         <Button
-          disabled={currentPage === backendPages || initial || toQuick}
+          disabled={currentPage === backendPages || initial || toQuick || error}
           onClick={() => props.onGetNextPage()}
           variant="contained"
           color="secondary"
